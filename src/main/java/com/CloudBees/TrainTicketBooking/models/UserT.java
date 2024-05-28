@@ -8,7 +8,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 
 @Entity
-public class User
+public class UserT
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,10 +24,10 @@ public class User
     @Email(message = "Email should be valid")
     private String email;
 
-    public User() {
+    public UserT() {
     }
 
-    public User(Long id,String firstName, String lastName, String email)
+    public UserT(Long id,String firstName, String lastName, String email)
     {
         this.id = id;
         this.firstName = firstName;

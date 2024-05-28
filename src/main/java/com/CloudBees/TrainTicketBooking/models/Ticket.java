@@ -15,12 +15,12 @@ public class Ticket
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private UserT user;
 
     public Ticket() {
     }
 
-    public Ticket(Long id,String fromLocation, String toLocation, Double price, User user) {
+    public Ticket(Long id,String fromLocation, String toLocation, Double price, UserT user) {
         this.fromLocation = fromLocation;
         this.toLocation = toLocation;
         this.price = price;
@@ -59,11 +59,11 @@ public class Ticket
         this.price = price;
     }
 
-    public User getUser() {
+    public UserT getUserT() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUserT(UserT user) {
         this.user = user;
     }
 }

@@ -1,33 +1,16 @@
-package com.CloudBees.TrainTicketBooking.models;
+package com.CloudBees.TrainTicketBooking.dto;
 
-import jakarta.persistence.*;
-
-@Entity
-public class TrainSeat
+public class TrainSeatDTO
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String section;
     private int seatNumber;
 
-    @OneToOne
-    @JoinColumn(name = "ticket_id")
-    private Ticket ticket;
-
-    public TrainSeat() {
-    }
-
-    public TrainSeat(Long id,String section, int seatNumber, UserT user)
-    {
+    public TrainSeatDTO(Long id, String section, int seatNumber) {
         this.id = id;
         this.section = section;
         this.seatNumber = seatNumber;
-        this.user = user;
     }
-
-    @OneToOne
-    private UserT user;
 
 
     public Long getId() {
@@ -52,13 +35,5 @@ public class TrainSeat
 
     public void setSeatNumber(int seatNumber) {
         this.seatNumber = seatNumber;
-    }
-
-    public UserT getUserT() {
-        return user;
-    }
-
-    public void setUserT(UserT user) {
-        this.user = user;
     }
 }

@@ -2,7 +2,7 @@ package com.CloudBees.TrainTicketBooking.service;
 
 import com.CloudBees.TrainTicketBooking.Exception.SeatAlreadyBookedException;
 import com.CloudBees.TrainTicketBooking.models.TrainSeat;
-import com.CloudBees.TrainTicketBooking.models.User;
+import com.CloudBees.TrainTicketBooking.models.UserT;
 import com.CloudBees.TrainTicketBooking.repository.TrainSeatRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -34,7 +34,7 @@ public class TrainSeatServiceTest {
     void testAllocateSeat_Success() {
         String section = "A";
         int seatNumber = 1;
-        User user = new User(1L, "John", "Doe", "john.doe@example.com");
+        UserT user = new UserT(1L, "John", "Doe", "john.doe@example.com");
         TrainSeat seat = new TrainSeat(1L, section, seatNumber, user);
 
         when(trainSeatRepository.existsBySectionAndSeatNumber(section, seatNumber)).thenReturn(false);
@@ -46,14 +46,14 @@ public class TrainSeatServiceTest {
         assertEquals(seat.getId(), result.getId());
         assertEquals(seat.getSection(), result.getSection());
         assertEquals(seat.getSeatNumber(), result.getSeatNumber());
-        assertEquals(seat.getUser().getId(), result.getUser().getId());
+        assertEquals(seat.getUserT().getId(), result.getUserT().getId());
     }
 
     @Test
     void testAllocateSeat_SeatAlreadyBooked() {
         String section = "A";
         int seatNumber = 1;
-        User user = new User(1L, "John", "Doe", "john.doe@example.com");
+        UserT user = new UserT(1L, "John", "Doe", "john.doe@example.com");
 
         when(trainSeatRepository.existsBySectionAndSeatNumber(section, seatNumber)).thenReturn(true);
 
@@ -74,7 +74,7 @@ public class TrainSeatServiceTest {
         Long seatId = 1L;
         int newSeatNumber = 2;
         String section = "A";
-        User user = new User(1L, "John", "Doe", "john.doe@example.com");
+        UserT user = new UserT(1L, "John", "Doe", "john.doe@example.com");
         TrainSeat seat = new TrainSeat(seatId, section, newSeatNumber, user);
 
         when(trainSeatRepository.findById(seatId)).thenReturn(java.util.Optional.of(seat));

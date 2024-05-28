@@ -3,7 +3,7 @@ package com.CloudBees.TrainTicketBooking.service;
 
 import com.CloudBees.TrainTicketBooking.Exception.SeatAlreadyBookedException;
 import com.CloudBees.TrainTicketBooking.models.TrainSeat;
-import com.CloudBees.TrainTicketBooking.models.User;
+import com.CloudBees.TrainTicketBooking.models.UserT;
 import com.CloudBees.TrainTicketBooking.repository.TrainSeatRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class TrainSeatService
     @Autowired
     private TrainSeatRepository trainSeatRepository;
 
-    public TrainSeat allocateSeat(String section, int seatNumber,@Valid User user)
+    public TrainSeat allocateSeat(String section, int seatNumber,@Valid UserT user)
     {
         if(trainSeatRepository.existsBySectionAndSeatNumber(section,seatNumber))
         {
@@ -33,7 +33,7 @@ public class TrainSeatService
         TrainSeat seat = new TrainSeat();
         seat.setSection(section);
         seat.setSeatNumber(seatNumber);
-        seat.setUser(user);
+        seat.setUserT(user);
         return trainSeatRepository.save(seat);
     }
 
@@ -102,6 +102,11 @@ public class TrainSeatService
             }
         }
         return availableSeats;
+    }
+
+
+    public TrainSeat getSeatByUser(UserT user) {
+        return trainSeatRepository.findByUser(user);
     }
 }
 

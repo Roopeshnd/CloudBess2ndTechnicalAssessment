@@ -4,16 +4,17 @@ public class ReceiptDTO {
     private UserDTO user;
     private TicketDTO ticket;
 
-    public ReceiptDTO(UserDTO user, TicketDTO ticket) {
-        this.user = user;
-        this.ticket = ticket;
-    }
+    private TrainSeatDTO trainSeatDTO;
 
     public ReceiptDTO() {
-
     }
 
-    // Getters and setters for user and ticket fields
+    public ReceiptDTO(UserDTO user, TicketDTO ticket, TrainSeatDTO trainSeatDTO) {
+        this.user = user;
+        this.ticket = ticket;
+        this.trainSeatDTO = trainSeatDTO;
+    }
+
     public UserDTO getUser() {
         return user;
     }
@@ -28,6 +29,14 @@ public class ReceiptDTO {
 
     public void setTicket(TicketDTO ticket) {
         this.ticket = ticket;
+    }
+
+    public TrainSeatDTO getTrainSeatDTO() {
+        return trainSeatDTO;
+    }
+
+    public void setTrainSeatDTO(TrainSeatDTO trainSeatDTO) {
+        this.trainSeatDTO = trainSeatDTO;
     }
 }
 

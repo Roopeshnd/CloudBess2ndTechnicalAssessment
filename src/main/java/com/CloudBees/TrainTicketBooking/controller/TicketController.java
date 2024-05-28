@@ -3,7 +3,6 @@ package com.CloudBees.TrainTicketBooking.controller;
 import com.CloudBees.TrainTicketBooking.dto.ReceiptDTO;
 import com.CloudBees.TrainTicketBooking.dto.TicketRequest;
 import com.CloudBees.TrainTicketBooking.models.Ticket;
-import com.CloudBees.TrainTicketBooking.models.User;
 import com.CloudBees.TrainTicketBooking.service.TicketService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

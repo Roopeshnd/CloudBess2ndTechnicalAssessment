@@ -1,7 +1,7 @@
 package com.CloudBees.TrainTicketBooking.repository;
 
 import com.CloudBees.TrainTicketBooking.models.TrainSeat;
-import com.CloudBees.TrainTicketBooking.models.User;
+import com.CloudBees.TrainTicketBooking.models.UserT;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,4 +16,5 @@ public interface TrainSeatRepository extends JpaRepository<TrainSeat,Long>
 
     List<TrainSeat> findBySectionOrderBySeatNumberAsc(String section);
 
+    TrainSeat findByUser(UserT user);
 }

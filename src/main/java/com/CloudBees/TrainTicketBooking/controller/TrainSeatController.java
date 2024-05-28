@@ -2,7 +2,6 @@ package com.CloudBees.TrainTicketBooking.controller;
 
 import com.CloudBees.TrainTicketBooking.Exception.SeatAlreadyBookedException;
 import com.CloudBees.TrainTicketBooking.models.TrainSeat;
-import com.CloudBees.TrainTicketBooking.models.User;
 import com.CloudBees.TrainTicketBooking.service.TrainSeatService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +27,7 @@ public class TrainSeatController
 
     @PostMapping("/allocate")
     public TrainSeat allocateSeat(@RequestBody TrainSeat seat) {
-        return trainSeatService.allocateSeat(seat.getSection(), seat.getSeatNumber(), seat.getUser());
+        return trainSeatService.allocateSeat(seat.getSection(), seat.getSeatNumber(), seat.getUserT());
     }
 
 

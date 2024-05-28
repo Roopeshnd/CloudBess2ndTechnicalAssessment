@@ -2,7 +2,8 @@ package com.CloudBees.TrainTicketBooking.service;
 
 import com.CloudBees.TrainTicketBooking.dto.TicketRequest;
 import com.CloudBees.TrainTicketBooking.models.Ticket;
-import com.CloudBees.TrainTicketBooking.models.User;
+
+import com.CloudBees.TrainTicketBooking.models.UserT;
 import com.CloudBees.TrainTicketBooking.repository.TicketRepository;
 import com.CloudBees.TrainTicketBooking.repository.UserRepository;
 import org.junit.jupiter.api.Test;
@@ -31,10 +32,10 @@ public class TicketServiceTest {
     void testPurchaseTicket_Success() {
         TicketRequest request = new TicketRequest("John", "Doe", "john.doe@example.com", "NYC", "LA");
 
-        User user = new User(1L, "John", "Doe", "john.doe@example.com");
+        UserT user = new UserT(1L, "John", "Doe", "john.doe@example.com");
         Ticket ticket = new Ticket(1L, "NYC", "LA", 100.0, user);
 
-        when(userRepository.save(any(User.class))).thenReturn(user);
+        when(userRepository.save(any(UserT.class))).thenReturn(user);
         when(ticketRepository.save(any(Ticket.class))).thenReturn(ticket);
 
         Ticket result = ticketService.purchaseTicket(request);
@@ -44,13 +45,13 @@ public class TicketServiceTest {
         assertEquals(ticket.getFromLocation(), result.getFromLocation());
         assertEquals(ticket.getToLocation(), result.getToLocation());
         assertEquals(ticket.getPrice(), result.getPrice());
-        assertEquals(ticket.getUser().getId(), result.getUser().getId());
+        assertEquals(ticket.getUserT().getId(), result.getUserT().getId());
     }
 
     @Test
     void testGetTicket_Success() {
         Long ticketId = 1L;
-        User user = new User(1L, "John", "Doe", "john.doe@example.com");
+        UserT user = new UserT(1L, "John", "Doe", "john.doe@example.com");
         Ticket ticket = new Ticket(1L, "NYC", "LA", 100.0, user);
 
         when(ticketRepository.findById(ticketId)).thenReturn(java.util.Optional.of(ticket));
@@ -62,7 +63,7 @@ public class TicketServiceTest {
         assertEquals(ticket.getFromLocation(), result.getFromLocation());
         assertEquals(ticket.getToLocation(), result.getToLocation());
         assertEquals(ticket.getPrice(), result.getPrice());
-        assertEquals(ticket.getUser().getId(), result.getUser().getId());
+        assertEquals(ticket.getUserT().getId(), result.getUserT().getId());
     }
 
 //    @Test
