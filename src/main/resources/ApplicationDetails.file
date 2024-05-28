@@ -1,0 +1,89 @@
+1). Purchase Ticket: http://localhost:8080/api/tickets/purchase (POST) - This api is to
+purchase the ticket
+
+Response Body to be passed
+{
+    "firstName": "Roopesh Gowda",
+    "lastName": "N D",
+    "email": "roopeshrock989@gmail.com",
+    "fromLocation": "London",
+    "toLocation": "France"
+}
+
+2). Get Ticket Details: /api/tickets/{ticketId} (GET) - This api is to get the data oa ticket
+
+Request that we get
+{
+    "id": 2,
+    "fromLocation": "London",
+    "toLocation": "France",
+    "price": 20.0,
+    "user": {
+        "id": 2,
+        "firstName": "Roopesh Gowda",
+        "lastName": "N D",
+        "email": "roopeshrock989@gmail.com"
+    }
+}
+
+3). Allocate Seat: /api/seats/allocate (POST) - This api is to allocate the seats for the users
+,who have purchased the data.
+
+Response body
+{
+    "section": "B",
+    "seatNumber": 10,
+    "user": {
+        "id": 2,
+        "firstName": "Roopesh Gowda",
+        "lastName": "N D",
+        "email": "roopeshrock989@gmail.com"
+    }
+}
+
+
+4). Get Seats by Section: /api/seats/section/{section} (Pass A or B) (GET)
+This Api is to get the user and seat details from the Particular Section
+
+
+[
+    {
+        "id": 1,
+        "section": "A",
+        "seatNumber": 1,
+        "user": {
+            "id": 1,
+            "firstName": "harsitha",
+            "lastName": "N D",
+            "email": "harsitha@gmail.com"
+        }
+    }
+]
+
+5). Remove User from Seat: /api/seats/remove/{seatId} (DELETE) - This is api is to seat ,
+the seat for a particular user using seat id.
+
+6). Modify Seat: /api/seats/modify/{seatId} (PUT) - This api is to Update the seat number;
+    PUT /api/seats/modify/1?newSeatNumber=3
+
+7).GET /api/seats/available - This Api is to get , how many seats are available in the Train.
+
+8). DELETE http://localhost:8080/api/tickets/2 - This is used to remove user from train
+
+9). GET http://localhost:8080/api/tickets/receipt/7 - This is to get the User Receipt.
+
+Response Body
+{
+    "user": {
+        "id": 7,
+        "firstName": "Pavan",
+        "lastName": "V",
+        "email": "pavan@gmail.com"
+    },
+    "ticket": {
+        "id": 7,
+        "fromLocation": "London",
+        "toLocation": "France",
+        "price": 20.0
+    }
+}
