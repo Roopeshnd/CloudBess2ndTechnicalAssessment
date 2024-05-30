@@ -14,6 +14,8 @@ public class TrainSeat
     @OneToOne
     @JoinColumn(name = "ticket_id")
     private Ticket ticket;
+    @OneToOne
+    private UserT user;
 
     public TrainSeat() {
     }
@@ -26,8 +28,7 @@ public class TrainSeat
         this.user = user;
     }
 
-    @OneToOne
-    private UserT user;
+
 
 
     public Long getId() {

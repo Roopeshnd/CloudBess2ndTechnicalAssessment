@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/tickets")
 @Validated
@@ -41,6 +43,13 @@ public class TicketController
     public ResponseEntity<ReceiptDTO> getReceiptDetails(@PathVariable Long userId) {
         ReceiptDTO receiptDTO = ticketService.getReceiptDetails(userId);
         return ResponseEntity.ok(receiptDTO);
+    }
+
+
+    @GetMapping("/getAllUsers")
+    public List<Ticket> gettingAllUsers(Ticket ticket)
+    {
+        return ticketService.getAllUsers(ticket);
     }
 
 

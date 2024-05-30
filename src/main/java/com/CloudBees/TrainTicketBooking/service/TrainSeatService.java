@@ -104,7 +104,6 @@ public class TrainSeatService
         return availableSeats;
     }
 
-
     public TrainSeat getSeatByUser(UserT user) {
         return trainSeatRepository.findByUser(user);
     }

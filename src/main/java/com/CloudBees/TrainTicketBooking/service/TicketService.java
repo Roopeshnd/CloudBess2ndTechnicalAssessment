@@ -12,9 +12,11 @@ import com.CloudBees.TrainTicketBooking.repository.TicketRepository;
 import com.CloudBees.TrainTicketBooking.repository.TrainSeatRepository;
 import com.CloudBees.TrainTicketBooking.repository.UserRepository;
 
+import jdk.dynalink.linker.LinkerServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 
 
 @Service
@@ -85,6 +87,12 @@ public class TicketService {
         // Create ReceiptDTO and populate with user, ticket, and seat details
         ReceiptDTO receiptDTO = new ReceiptDTO(userDTO, ticketDTO, seatDTO);
         return receiptDTO;
+    }
+
+
+    public List<Ticket> getAllUsers(Ticket ticket)
+    {
+       return ticketRepository.findAll();
     }
 
 
