@@ -107,5 +107,18 @@ public class TrainSeatService
     public TrainSeat getSeatByUser(UserT user) {
         return trainSeatRepository.findByUser(user);
     }
+
+
+//   //Automatically allocate seats.
+//    public TrainSeat allocateSeatAutomatically(UserT user) {
+//        String[] sections = {"A", "B"};
+//        for (String section : sections) {
+//            int nextAvailableSeatNumber = findNextAvailableSeat(section);
+//            if (nextAvailableSeatNumber <= TOTAL_SEATS_PER_SECTION) {
+//                return allocateSeat(section, nextAvailableSeatNumber, user);
+//            }
+//        }
+//        throw new SeatAlreadyBookedException("No available seats in all sections.");
+//    }
 }
 

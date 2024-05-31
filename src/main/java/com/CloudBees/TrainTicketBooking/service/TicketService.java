@@ -51,7 +51,12 @@ public class TicketService {
         ticket.setToLocation(request.getToLocation());
         ticket.setPrice(20.0); // Assuming a fixed price for simplicity
 
-        return  ticketRepository.save(ticket);
+       return ticketRepository.save(ticket);
+//        String section = "A"; // You can decide how to determine the section, here it's hardcoded to "A"
+//        int seatNumber = trainSeatService.findNextAvailableSeat(section);
+//        TrainSeat seat = trainSeatService.allocateSeat(section, seatNumber, user);
+//
+//        return ticket;
     }
 
     public Ticket getTicket(Long ticketId)
